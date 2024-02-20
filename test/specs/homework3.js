@@ -1,4 +1,5 @@
 import { expect } from '@wdio/globals'
+import { MAX_TIME, MIN_TIME } from "../constants.js";
 
 describe('Homework 3 (lesson #13)', () => {
 
@@ -9,19 +10,19 @@ describe('Homework 3 (lesson #13)', () => {
 
         let signInButton = await $('[class="d-inline-block d-lg-none flex-order-1 f5 no-underline border color-border-default rounded-2 px-2 py-1 color-fg-inherit"]')
         await signInButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let inputUsername = await $('#login_field')
         await inputUsername.setValue('dkostuk09@gmail.com') 
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let inputPassword = await $('#password')
         await inputPassword.setValue('incorrectPassword') 
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let loginButton = await $('//input[@value="Sign in"]')
         await loginButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let allertMessage = await $('[class="js-flash-alert"]')     
         await expect((await allertMessage.getText()).trim()).toEqual('Incorrect username or password.') 
@@ -33,15 +34,15 @@ describe('Homework 3 (lesson #13)', () => {
 
         let signInButton = await $('[class="d-inline-block d-lg-none flex-order-1 f5 no-underline border color-border-default rounded-2 px-2 py-1 color-fg-inherit"]')
         await signInButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let forgotPasswordButton = await $('[class="label-link position-absolute top-0 right-0"]')
         await forgotPasswordButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let inputUsername = await $('#email_field')
         await inputUsername.setValue('dkostuk09@gmail.com') 
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let verifyText = await $('[class="f4 mb-3"]')     
         await expect(await verifyText.getText()).toEqual('Verify your account') 
@@ -56,28 +57,28 @@ describe('Homework 3 (lesson #13)', () => {
 
         let burgerButton = await $('[class="js-details-target Button--link Button--medium Button d-lg-none color-fg-inherit p-1"]')
         await burgerButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let searchButton = await $('[class="header-search-button placeholder input-button form-control d-flex flex-1 flex-self-stretch flex-items-center no-wrap width-full py-0 pl-2 pr-0 text-left border-0 box-shadow-none"]')
         await searchButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
         
         let inputSearch = await $('#query-builder-test')
         await inputSearch.addValue('resume') 
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let search = await $('[class="ActionListItem-descriptionWrap"]')
         await search.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
        
         let heading = await $('[class="Text-sc-17v1xeu-0 dRSoUn"]')     
         await expect(await heading.getText()).toEqual('Filter by') 
 
         let sponsorableProjectsButton = await $('[class="Link__StyledLink-sc-14289xe-0 hORTBF"]')
         await sponsorableProjectsButton.scrollIntoView()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
         await sponsorableProjectsButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let refreshButton = await $('#sponsors-featured-accounts-refresh-button')
         let isClickable = await refreshButton.isClickable()
@@ -89,11 +90,11 @@ describe('Homework 3 (lesson #13)', () => {
 
         let burgerButton = await $('[class="js-details-target Button--link Button--medium Button d-lg-none color-fg-inherit p-1"]')
         await burgerButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let pricingButton = await $('[class="HeaderMenu-link no-underline px-0 px-lg-2 py-3 py-lg-2 d-block d-lg-inline-block"]')
         await pricingButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let mainHeading = await $('[class="h2-mktg"]')     
         await expect(await mainHeading.getText()).toEqual('Get the complete developer platform.') 
@@ -104,15 +105,15 @@ describe('Homework 3 (lesson #13)', () => {
 
         let joinButton = await $('[class="btn-mktg d-block btn-muted-mktg"]')
         await joinButton.click()
-        await browser.pause(4000)
+        await browser.pause(MAX_TIME)
        
         let inputEmail = await $('#email')
         await inputEmail.addValue('incorrectEmail') 
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let continueButton = await $('//*[@id="email-container"]/div[2]/button')
         await continueButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let errorMessage = await $('[class="mb-0"]')     
         await expect(await errorMessage.getText()).toEqual('Email is invalid or already taken') 
@@ -124,26 +125,26 @@ describe('Homework 3 (lesson #13)', () => {
 
         let burgerButton = await $('[class="js-details-target Button--link Button--medium Button d-lg-none color-fg-inherit p-1"]')
         await burgerButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
        
         let productButton = await $('/html/body/div[1]/div[1]/header/div/div[2]/div/nav/ul/li[1]/button')
         await productButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let issuesButton = await $('/html/body/div[1]/div[1]/header/div/div[2]/div/nav/ul/li[1]/div/div[1]/ul/li[7]/a')
         await issuesButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let mainText = await $('[class="h1-mktg mx-auto col-6-max"]')     
         await expect(await mainText.getText()).toEqual('Project planning for developers') 
    
         let videoButton = await $('/html/body/div[1]/div[4]/main/div[2]/div/div[2]/div/details/summary')
         await videoButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
        
         let crossButton = await $('/html/body/div[1]/div[4]/main/div[2]/div/div[2]/div/details/details-dialog/button')
         await crossButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
         
         let text = await $('[class="f3-mktg col-5-max mx-auto mt-4 color-fg-muted"]')
         await text.saveScreenshot('issuesText.png')

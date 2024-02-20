@@ -1,4 +1,4 @@
-import { expect } from '@wdio/globals'
+import { MAX_TIME, MIN_TIME } from "../constants.js";
 
 describe('Homework 2 (lesson #13)', () => {
 
@@ -9,16 +9,16 @@ describe('Homework 2 (lesson #13)', () => {
 
         let apiButton = await $('//*[@id="__docusaurus"]/nav/div[1]/div[1]/a[3]')       
         await apiButton.click()
-        await browser.pause(4000)
+        await browser.pause(MAX_TIME)
     });
 
     xit('Scroll to bottom', async () => {
         await browser.url('https://webdriver.io/docs/api');
 
         const blogButton = await $('.footer__link-item[href="/blog"]')
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
         await blogButton.scrollIntoView()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
     });
 
     xit('Check that \'Blog\' button is displayed', async () => {
@@ -33,9 +33,9 @@ describe('Homework 2 (lesson #13)', () => {
         await browser.url('https://webdriver.io/docs/api');
 
         const blogButton = await $('.footer__link-item[href="/blog"]')
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
         await blogButton.scrollIntoView()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         const protocolCommandsButton = await $('//*[@id="__docusaurus_skipToContent_fallback"]/div/div/main/div/div/div/div/nav/a')
         let displayedInViewport = await protocolCommandsButton.isDisplayedInViewport()

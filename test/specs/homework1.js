@@ -1,4 +1,5 @@
 import { expect } from '@wdio/globals'
+import { MAX_TIME, MIN_TIME } from '../constants';
 
 describe('Homework 1 (lesson #8)', () => {
 
@@ -9,7 +10,7 @@ describe('Homework 1 (lesson #8)', () => {
 
         let apiButton = await $('//*[@id="__docusaurus"]/nav/div[1]/div[1]/a[3]')       
         await apiButton.click()
-        await browser.pause(4000)
+        await browser.pause(MAX_TIME)
     });
 
     xit('Check heading', async () => {
@@ -17,7 +18,7 @@ describe('Homework 1 (lesson #8)', () => {
 
         let heading = await $('//*[@id="__docusaurus_skipToContent_fallback"]/div/div/main/div/div/div[1]/div/article/div[2]/header/h1')
         await expect(heading).toHaveText('Introduction')
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
     });
    
     xit('Check that text has link', async () => {
@@ -27,7 +28,7 @@ describe('Homework 1 (lesson #8)', () => {
         let attr = await link.getAttribute('href')
         await expect(attr).toEqual('/docs/api/webdriver')
         console.log('Attribute: ' + attr)
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
     });
    
     xit('Check \'Search\' button -> search docs -> reset reach', async () => {
@@ -35,16 +36,16 @@ describe('Homework 1 (lesson #8)', () => {
 
         let searchButton = await $('.navbarSearchContainer_Bca1')
         await searchButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let input = await $('.DocSearch-Input')
         await input.setValue('It is done!') 
         await expect(input).toHaveValue('It is done!')
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let crossButton = await $('.DocSearch-Reset')
         await crossButton.click()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
     });
 
 });

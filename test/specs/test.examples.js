@@ -1,21 +1,22 @@
-import MainPage from "./../pages/main.page.js";
+import MainPage from "../pages/main.page.js";
 import GameDevPage from "../pages/gamedev.page.js";
+import LoginPage from "./../pages/main.page.js";
 import { expect } from '@wdio/globals'
-//import LoginPage from "./../pages/main.page.js";
+import { MAX_TIME } from "../constants.js";
 
-describe('Webdriverio main page', () => {
+describe('Example checks', () => {
 
     xit('Dou checks', async () => {
         await browser.url('https://dou.ua');
         
         await MainPage.clickOnBandBtn()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         await MainPage.clickOnForumBtn()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         await MainPage.clickOnGameDevBtn()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         await GameDevPage.clickOnTopGamesRateLink()
         
@@ -26,10 +27,10 @@ describe('Webdriverio main page', () => {
         await browser.url('https://the-internet.herokuapp.com/login');
         
         await LoginPage.setUsernameInput('tomsmith')
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         await LoginPage.setPasswordInput('SuperSecretPassword!')
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         await LoginPage.clickOnLoginBtn()
 
@@ -53,10 +54,10 @@ describe('Webdriverio main page', () => {
 
         let input = await $('#username')
         await input.addValue('hello') 
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         await input.addValue(123)
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         await expect(input).toHaveValue('hello123')
     });
@@ -68,7 +69,7 @@ describe('Webdriverio main page', () => {
         let input = await $('#username')
         await input.setValue('world') 
         await input.setValue('hello') 
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         console.log(await input.getValue())
         await expect(input).toHaveValue('hello')
@@ -79,20 +80,20 @@ describe('Webdriverio main page', () => {
         await browser.url('https://the-internet.herokuapp.com/login');
 
         let loginButton = await $('.radius')
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
         await loginButton.click()
-        await browser.pause(4000)
+        await browser.pause(MAX_TIME)
 
         let inputUsername = await $('#username')
         await inputUsername.addValue('tomsmith') 
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         let inputPassword = await $('#password')
         await inputPassword.addValue('SuperSecretPassword!') 
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         await loginButton.click()
-        await browser.pause(4000)
+        await browser.pause(MAX_TIME)
     });
 
     // getAttribute()
@@ -106,7 +107,7 @@ describe('Webdriverio main page', () => {
         await inputSearch.setValue('Cat')
         attr = await inputSearch.getValue()
 
-        await browser.pause(4000)
+        await browser.pause(MAX_TIME)
         console.log('Value attribute is: ' + attr)
     });
 
@@ -177,10 +178,10 @@ describe('Webdriverio main page', () => {
         const getStartedButton = await $('.button[href="/docs/gettingstarted"]')
         let isFocused = await getStartedButton.isFocused()
         console.log('Is get started button focused before click: ' + isFocused)
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
         await getStartedButton.click()
         console.log('Is get started button focused after click: ' + isFocused)
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
     });
 
     // scrollIntoView()
@@ -188,9 +189,9 @@ describe('Webdriverio main page', () => {
         await browser.url('https://webdriver.io');
 
         const getStratedLink = await $('.footer__link-item[href="/docs/gettingstarted"]')
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
         await getStratedLink.scrollIntoView()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
     });
 
     // saveScreenshot()
@@ -198,9 +199,9 @@ describe('Webdriverio main page', () => {
         await browser.url('https://webdriver.io');
 
         const getStratedLink = await $('.footer__link-item[href="/docs/gettingstarted"]')
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
         await getStratedLink.scrollIntoView()
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
         await getStratedLink.saveScreenshot('linkScreenshot.png')
     });
 
@@ -209,10 +210,10 @@ describe('Webdriverio main page', () => {
         await browser.url('https://webdriver.io');
 
         await browser.newWindow('https://google.com');
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
 
         await browser.switchWindow('https://webdriver.io');
-        await browser.pause(2000)
+        await browser.pause(MIN_TIME)
     });
 
     // waitUntil()
